@@ -72,7 +72,7 @@
         </div>
     </div>
 <!---Code for mp3 in background without showing any media player (whenever touch or click happen music will be start)--->
-<audio id="bgMusic" src="Tumhe Jo Maine Dekha.mp3" loop></audio>
+<audio id="bgMusic" src="Tumhe Jo Maine Dekha.mp3" autoplay loop playsinline></audio>
 <button id="muteToggle" style="position:fixed; bottom:20px; right:20px; z-index:999;">🔊</button>    
 <script>
   const bgMusic = document.getElementById('bgMusic');
@@ -92,6 +92,26 @@
   document.addEventListener('click', unlockAudio);
   document.addEventListener('touchstart', unlockAudio);
 </script>
+<script>
+  const bgMusic = document.getElementById('bgMusic');
+  let audioUnlocked = false;
+
+  function unlockAudio() {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+
+    bgMusic.muted = false;
+    bgMusic.play().then(() => {
+      console.log('Playing successfully');
+    }).catch((err) => {
+      console.log('Play still blocked:', err);
+    });
+  }
+
+  // Use touchend, not touchstart — more reliable trigger on iOS
+  document.addEventListener('touchend', unlockAudio, { once: true });
+  document.addEventListener('click', unlockAudio, { once: true });
+</script>    
 <script>
   document.getElementById('muteToggle').addEventListener('click', () => {
     bgMusic.muted = !bgMusic.muted;
