@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love You</title>
+    <link rel="icon" type="x-icon" href="images/2.jpg">
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #D2D2D2;
+            background-image:
+            repeating-linear-gradient(
+                to right, transparent 0 100px,
+                #25283b22 100px 101px
+            ),
+            repeating-linear-gradient(
+                to bottom, transparent 0 100px,
+                #25283b22 100px 101px
+            );
+        }
+        
+        body::before{
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="images/1.jpg" alt=""></div>
+            <div class="item" style="--position: 2"><img src="images/2.jpg" alt=""></div>
+            <div class="item" style="--position: 3"><img src="images/3.jpg" alt=""></div>
+            <div class="item" style="--position: 4"><img src="images/4.jpg" alt=""></div>
+            <div class="item" style="--position: 5"><img src="images/5.jpg" alt=""></div>
+            <div class="item" style="--position: 6"><img src="images/6.jpg" alt=""></div>
+            <div class="item" style="--position: 7"><img src="images/7.jpg" alt=""></div>
+            <div class="item" style="--position: 8"><img src="images/8.jpg" alt=""></div>
+            <div class="item" style="--position: 9"><img src="images/9.jpg" alt=""></div>
+            <div class="item" style="--position: 10"><img src="images/10.jpg" alt=""></div>
+        </div>
+        <div class="content">
+            <h1 data-content="Shona Baby">
+                Shona Baby
+            </h1>
+            <div class="author">
+                <h2>My Love</h2>
+                <p>My Life</p>
+                <p>My Babe</p>
+                
+                <p>My Everything</p>
+            </div>
+            <div class="model"></div>
+        </div>
+    </div>
+    <!---Code for mp3 in background without showing any media player (whenever touch or click happen music will be start)--->
+    <audio id="bgMusic" src="Tumhe Jo Maine Dekha.mp3" loop></audio>
+
+<script>
+  const bgMusic = document.getElementById('bgMusic');
+
+  // Try muted autoplay immediately (usually allowed)
+  bgMusic.muted = true;
+  bgMusic.play();
+
+  // On first user interaction anywhere, unmute and ensure it's playing
+  function unlockAudio() {
+    bgMusic.muted = false;
+    bgMusic.play();
+    document.removeEventListener('click', unlockAudio);
+    document.removeEventListener('touchstart', unlockAudio);
+  }
+
+  document.addEventListener('click', unlockAudio);
+  document.addEventListener('touchstart', unlockAudio);
+</script>
+</body>
+</html>
