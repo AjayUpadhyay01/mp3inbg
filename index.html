@@ -74,7 +74,8 @@
 <!---Code for mp3 in background without showing any media player (whenever touch or click happen music will be start)--->
 <audio id="bgMusic" src="Tumhe Jo Maine Dekha.mp3" autoplay loop playsinline></audio>
 <button id="muteToggle" style="position:fixed; bottom:20px; right:20px; z-index:999;">🔊</button>    
-<script>
+<!---
+    <script>
   const bgMusic = document.getElementById('bgMusic');
 
   // Try muted autoplay immediately (usually allowed)
@@ -92,6 +93,8 @@
   document.addEventListener('click', unlockAudio);
   document.addEventListener('touchstart', unlockAudio);
 </script>
+
+    ---->
 <script>
   const bgMusic = document.getElementById('bgMusic');
   let audioUnlocked = false;
